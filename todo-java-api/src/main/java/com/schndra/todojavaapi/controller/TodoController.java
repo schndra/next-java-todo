@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/")
 public class TodoController {
@@ -19,7 +21,8 @@ public class TodoController {
     }
 
     @GetMapping("/todos")
-    public ResponseEntity<String> allTodos () {
-        return new ResponseEntity<String>("All todos", HttpStatus.OK);
+    public List<Todo> allTodos ()
+    {
+        return todoService.getAllTodos();
     }
 }
