@@ -7,6 +7,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class TodoService {
 
@@ -18,5 +21,19 @@ public class TodoService {
         BeanUtils.copyProperties(todo, todoEntity);
         todoRepository.save(todoEntity);
         return todo;
+    }
+
+    public List<Todo> getAllTodos() {
+        List<TodoEntity> todoEntities = todoRepository.findAll();
+
+        List<Todo> todos = todoEntities
+                .stream()
+                .map((todo) -> new Todo(
+                        todo.getId(),
+                        todo.getTitle(),
+                        todo.isCompleted()))
+                .collect(Collectors.toList());
+
+        return todos;
     }
 }
