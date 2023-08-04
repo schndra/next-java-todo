@@ -36,4 +36,18 @@ public class TodoService {
 
         return todos;
     }
+
+    public Todo updateTodo(Long id, Todo todo) {
+        Optional<TodoEntity> todoEntity = todoRepository.findById(id);
+
+        if(todoEntity.isPresent()){
+            TodoEntity existingTodoEntity = todoEntity.get();
+
+            BeanUtils.copyProperties(todo, existingTodoEntity);
+            todoRepository.save(existingTodoEntity);
+            return todo;
+        }
+
+        return null;
+    }
 }
