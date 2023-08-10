@@ -10,12 +10,21 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   return (
     <li className="p-2 flex justify-between items-center ">
       <div className="flex gap-2 items-center">
-        <FaSquareCheck />
-        {/* <input type="checkbox" className="hover:cursor-pointer" /> */}
-        <p>todo text asdfsdfsdfsdfsdf</p>
+        {todo.completed ? (
+          <button>
+            <FaRegSquareCheck />
+          </button>
+        ) : (
+          <button>
+            <FaSquareCheck />
+          </button>
+        )}
+        <p>{todo.title}</p>
       </div>
 
-      <FaTrash />
+      <button>
+        <FaTrash />
+      </button>
     </li>
   );
 };
