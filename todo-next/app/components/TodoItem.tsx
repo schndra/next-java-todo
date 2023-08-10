@@ -6,7 +6,7 @@ interface TodoItemProps {
   todo: ITodo;
 }
 
-const TodoItem = () => {
+const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   return (
     <li className="p-2 flex justify-between items-center ">
       <div className="flex gap-2 items-center">
