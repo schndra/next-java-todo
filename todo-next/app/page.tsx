@@ -2,6 +2,7 @@ import { getAllTodos } from "@/utils/todo-service";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 
+export default async function Home() {
   const todos = await getAllTodos();
   return (
     <main className="grid h-screen">
