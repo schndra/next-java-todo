@@ -1,6 +1,9 @@
+import { ITodo } from "@/types/todos";
 import TodoItem from "./TodoItem";
 
-const TodoList = () => {
+interface TodoListProps {
+  todos: ITodo[];
+}
   return (
     <div className="mt-4">
       <TodoItem />
