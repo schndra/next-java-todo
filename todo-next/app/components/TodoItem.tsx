@@ -1,5 +1,9 @@
+import { ITodo } from "@/types/todos";
 import { FaTrash } from "react-icons/fa6";
-import { FaSquareCheck } from "react-icons/fa6";
+
+interface TodoItemProps {
+  todo: ITodo;
+}
 
 const TodoItem = () => {
   return (
