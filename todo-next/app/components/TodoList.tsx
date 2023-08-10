@@ -4,10 +4,14 @@ import TodoItem from "./TodoItem";
 interface TodoListProps {
   todos: ITodo[];
 }
+
+const TodoList: React.FC<TodoListProps> = ({ todos }) => {
   return (
-    <div className="mt-4">
-      <TodoItem />
-    </div>
+    <ul className="mt-4">
+      {todos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} />
+      ))}
+    </ul>
   );
 };
 export default TodoList;
