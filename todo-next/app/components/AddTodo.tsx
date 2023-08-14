@@ -1,3 +1,4 @@
+"use client";
 import { FormEventHandler, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 
