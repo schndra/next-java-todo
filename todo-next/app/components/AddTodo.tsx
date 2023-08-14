@@ -1,6 +1,20 @@
+import { FormEventHandler, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 
 const AddTodo = () => {
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+
+    await createTodo({
+      title,
+      completed: false,
+    });
+
+    //clear state
+    setTitle("");
+  };
+
   return (
     <div className="flex justify-center items-center gap-2 mt-4 flex-col">
       <input type="text" className="p-2 w-full rounded-md" />
