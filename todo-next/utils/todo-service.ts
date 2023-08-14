@@ -7,3 +7,17 @@ export const getAllTodos = async (): Promise<ITodo[]> => {
   const todos = await res.json();
   return todos;
 };
+
+export const createTodo = async (todo: {
+  title: string;
+  completed: boolean;
+}): Promise<ITodo> => {
+  const res = await fetch(`${baseUrl}/api/v1/todos`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(todo),
+  });
+
+  const newTodo = await res.json();
+  return newTodo;
+};
