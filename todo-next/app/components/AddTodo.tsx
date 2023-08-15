@@ -1,13 +1,18 @@
 "use client";
 import { createTodo } from "@/utils/todo-service";
+import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 
 const AddTodo = () => {
+  const router = useRouter();
   const [title, setTitle] = useState<string>("");
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    if (title === "") {
+      return;
+    }
 
     await createTodo({
       title,
@@ -16,6 +21,8 @@ const AddTodo = () => {
 
     //clear state
     setTitle("");
+    //refresh router
+    router.refresh();
   };
 
   return (
