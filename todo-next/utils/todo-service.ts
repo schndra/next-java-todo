@@ -1,3 +1,4 @@
+import { headers } from "next/dist/client/components/headers";
 import { ITodo } from "../types/todos";
 
 const baseUrl = "http://localhost:8080";
@@ -20,4 +21,15 @@ export const createTodo = async (todo: {
 
   const newTodo = await res.json();
   return newTodo;
+};
+
+export const updateTodo = async (todo: ITodo): Promise<any> => {
+  const res = await fetch(`${baseUrl}/api/v1/todos/${todo.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(todo),
+  });
+  const updatedTodo = await res.json();
+  console.log(updatedTodo);
+  return updatedTodo;
 };
