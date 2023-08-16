@@ -23,7 +23,7 @@ export const createTodo = async (todo: {
   return newTodo;
 };
 
-export const updateTodo = async (todo: ITodo): Promise<any> => {
+export const updateTodo = async (todo: ITodo): Promise<ITodo> => {
   const res = await fetch(`${baseUrl}/api/v1/todos/${todo.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
