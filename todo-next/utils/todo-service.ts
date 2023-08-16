@@ -33,3 +33,10 @@ export const updateTodo = async (todo: ITodo): Promise<ITodo> => {
   console.log(updatedTodo);
   return updatedTodo;
 };
+
+export const deleteTodo = async (todoId: string): Promise<void> => {
+  const res = await fetch(`${baseUrl}/api/v1/todos/${todoId}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
+};
